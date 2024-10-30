@@ -9,11 +9,18 @@ class Kenaikan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_siswa', 'tahun_ajaran', 'kelas_asal', 'kelas_tujuan'];
+    protected $fillable = ['id_siswa', 'tahun_ajaran', 'kelas_asal', 'kelas_tujuan', 'status'];
 
-    // Jika Anda ingin menambahkan relasi
     public function siswa()
     {
         return $this->belongsTo(Siswa::class, 'id_siswa');
+    }
+    public function  kelas_Asal()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_asal');
+    }
+    public function   kelas_Tujuan()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_tujuan');
     }
 }

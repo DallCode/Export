@@ -8,6 +8,7 @@ use App\Http\Controllers\KenaikanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportKenaikanController;
 use App\Http\Controllers\ImportSiswaController;
 
 // Halaman Utama
@@ -46,11 +47,15 @@ Route::middleware('auth')->group(function () {
     // Tambahkan route untuk import
     Route::post('/siswa/import', [ImportSiswaController::class, 'import'])->middleware(['auth', 'role:kurikulum'])->name('siswa.import');
 
+    Route::post('/kenaikan/import', [ImportKenaikanController::class, 'import'])->name('kenaikan.import');
+
     // Route untuk eksport data siswa
     //Route::get('/siswa/export', [SiswaController::class, 'export'])->name('siswa.export'); // Pastikan ini ada
     //Route::get('/siswa/export', [SiswaController::class, 'export'])->name('siswa.export');
 
     Route::get('/export', [SiswaController::class, 'export'])->name('siswa.export');
+
+    Route::get('/exports/kenaikan', [KenaikanController::class, 'export'])->name('kenaikan.export');
 });
 
 

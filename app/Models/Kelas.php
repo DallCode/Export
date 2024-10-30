@@ -15,4 +15,12 @@ class Kelas extends Model
     {
         return $this->hasMany(Siswa::class, 'id_kelas');
     }
+    public function kenaikan_Asal()
+    {
+        return $this->hasMany(Kenaikan::class, 'kelas_asal');
+    }
+    public function kenaikan_Tujuan()
+    {
+        return $this->hasMany(Kenaikan::class, 'kelas_tujuan');
+    }
 }
